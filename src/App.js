@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import SidebarComponent from './sidebar/sidebar';
+import Editor from './editor/editor';
 const firebase = require('firebase');
 class App extends React.Component {
 	constructor() {
@@ -12,7 +14,12 @@ class App extends React.Component {
 	}
 
 	render() {
-		return <h1>Hello World</h1>;
+		return (
+			<div className="app-container">
+				<SidebarComponent />
+				<Editor />
+			</div>
+		);
 	}
 	componentDidMount = () => {
 		firebase.firestore().collection('notes').onSnapshot((serverUpdate) => {
